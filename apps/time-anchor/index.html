@@ -147,10 +147,70 @@
             box-shadow: 0 4px 18px rgba(74,60,49,.06);
             backdrop-filter: blur(10px);
         }
+        #app-fallback { display: none; }
+        .app-fallback-active #app { display: none !important; }
+        .app-fallback-active #app-fallback {
+            width: min(92vw, 760px);
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 24px;
+            padding: 42px;
+            border: 1px solid rgba(168,162,158,.55);
+            border-radius: 22px;
+            background: #fdfbf7;
+            box-shadow: 0 20px 60px rgba(74,60,49,.12);
+            text-align: center;
+        }
+        .fallback-map {
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid rgba(168,162,158,.35);
+            border-radius: 16px;
+            background: #fcfaf2;
+        }
+        .fallback-grid {
+            display: grid;
+            grid-template-columns: repeat(14, 1fr);
+            gap: 5px;
+            margin-top: 16px;
+        }
+        .fallback-grid i {
+            aspect-ratio: 1;
+            border-radius: 2px;
+            background: rgba(214,211,209,.58);
+        }
+        .fallback-grid i:nth-child(6n) { background: rgba(178,139,92,.42); }
+        .fallback-title {
+            color: #4a3c31;
+            font-family: 'Klee One', 'Noto Serif SC', Georgia, serif;
+            font-size: clamp(42px, 7vw, 72px);
+            line-height: .92;
+            font-weight: 700;
+        }
+        .fallback-copy {
+            max-width: 520px;
+            margin: 0 auto;
+            color: #78716c;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .fallback-link {
+            align-self: center;
+            padding: 11px 17px;
+            border-radius: 999px;
+            background: #4a3c31;
+            color: #fffdf8;
+            font: 600 11px/1 system-ui, sans-serif;
+            text-decoration: none;
+        }
         @media (max-width: 640px) {
             .app-shell { top: 8px; }
             .app-brand { font-size: 9px; }
             .privacy-note { position: static; margin: 10px auto 0; text-align: center; }
+            .app-fallback-active #app-fallback { padding: 28px 20px; min-height: 500px; }
         }
         .group:hover .animate-oar-left {
             animation: oarRowLeft 1.4s ease-in-out infinite;
@@ -167,6 +227,21 @@
         <span class="app-brand">TIME ANCHOR · PRIVATE BY DESIGN</span>
         <button id="install-app" class="install-button" type="button">安装到设备</button>
     </div>
+
+    <section id="app-fallback" aria-label="Time Anchor preview fallback">
+        <div class="fallback-map">
+            <span class="text-[11px] tracking-wider text-stone-500 font-book-title">🌊 百舸记忆图谱 · Mosaic Map</span>
+            <div class="fallback-grid" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+        </div>
+        <h1 class="fallback-title">时间锚</h1>
+        <p class="fallback-copy">互动版本正在加载。即使网络暂时拦截了脚本，个人网站也会保留这个产品预览，而不是显示空白区域。</p>
+        <a class="fallback-link" href="./" target="_blank" rel="noopener">Open Time Anchor</a>
+    </section>
 
     <div id="app" class="w-full flex justify-center">
         
@@ -595,6 +670,9 @@
     </div>
 
     <script>
+        if (!window.Vue) {
+            document.documentElement.classList.add('app-fallback-active');
+        } else {
         const { createApp, ref, computed, watch, onMounted } = Vue;
 
         createApp({
@@ -1067,7 +1145,9 @@
                     exportData, triggerImportClick, handleImport
                 }
             }
-        }).mount('#app')
+        }).mount('#app');
+        document.body.dataset.appReady = "true";
+        }
     </script>
     <p class="privacy-note">🔒 所有文字与图片仅存于当前浏览器，本应用不上传、不追踪，也不需要注册账号。</p>
     <script>

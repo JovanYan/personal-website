@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=32">
+  <link rel="stylesheet" href="styles.css?v=33">
 </head>
 <body>
   <div class="cursor-label" aria-hidden="true">VIEW</div>
@@ -169,11 +169,11 @@
             <div><dt>Codex</dt><dd>Iteration, debugging, integration, and product QA</dd></div>
             <div><dt>My role</dt><dd>User insight, priorities, trade-offs, experience principles, and final acceptance</dd></div>
           </dl>
-          <div class="anchor-actions"><a class="outline-button" href="apps/time-anchor/" target="_blank" rel="noopener">Try the product ↗</a><a class="outline-button" href="previews/time-anchor-case/" target="_blank" rel="noopener">See how I built it ↗</a></div>
+          <div class="anchor-actions"><a class="outline-button" href="apps/time-anchor/" target="_blank" rel="noopener">Try the product ↗</a><button class="outline-button anchor-case-open" type="button">See how I built it ↗</button></div>
         </div>
         <div class="try-panel">
           <div><span><i></i> LIVE PROTOTYPE</span><b>TRY IT HERE ↓</b></div>
-          <iframe src="apps/time-anchor/" title="Interactive Time Anchor five-year diary"></iframe>
+          <iframe src="./apps/time-anchor/index.html?v=3" title="Interactive Time Anchor five-year diary" loading="eager"></iframe>
         </div>
       </article>
     </section>
@@ -183,7 +183,7 @@
       <div>
         <h2>Let’s build something people <em>want to join.</em></h2>
         <p>Have an idea, question, or interesting problem? Let’s connect.</p>
-        <div class="contact-actions"><a href="mailto:yanzhuofan333@163.com">Email me ↗</a><button class="wechat-open" type="button">WeChat / Phone +</button></div>
+        <div class="contact-actions"><button class="email-open" type="button">Email me ↗</button><button class="wechat-open" type="button">WeChat / Phone +</button></div>
       </div>
       <footer><span>Shanghai, China</span><span>yanzhuofan333@163.com</span><span>© 2026 Jovan Yan</span></footer>
     </section>
@@ -205,11 +205,71 @@
     </aside>
   </div>
 
+  <div class="anchor-case-layer" hidden>
+    <button class="anchor-case-scrim" type="button" aria-label="Close Time Anchor case"></button>
+    <aside class="anchor-case-drawer" role="dialog" aria-modal="true" aria-labelledby="anchor-case-title">
+      <button class="anchor-case-close anchor-case-close-top" type="button" aria-label="Close Time Anchor case">×</button>
+      <div class="anchor-case-scroll">
+        <span class="anchor-case-kicker">TIME ANCHOR · PRODUCT CASE</span>
+        <h2 id="anchor-case-title">A diary people wanted to keep, without the friction that made them stop.</h2>
+        <p class="anchor-case-summary">I turned a conversation at an offline journaling event into a working local-first product by defining the experience, designing its metaphors, and using AI to close the distance between an observation and something people can try.</p>
+
+        <section class="anchor-case-origin">
+          <div>
+            <span>01 · OBSERVE</span>
+            <h3>The real problem was continuity.</h3>
+            <p>At an offline journaling event, I heard the same tension several times: physical five-year diaries felt meaningful, but they were difficult to carry, offered little feedback, and made progress hard to see.</p>
+          </div>
+          <blockquote>I reframed the challenge from “make journaling more emotional” to reducing friction while preserving the seriousness of writing something down.</blockquote>
+        </section>
+
+        <section class="anchor-case-decisions">
+          <span>02 · PRODUCT RESPONSE</span>
+          <h3>Three decisions shaped the experience.</h3>
+          <ol>
+            <li><b>01</b><div><strong>Make time visible.</strong><p>A same-day five-year timeline supports reflection; an annual memory map makes accumulated effort visible.</p></div></li>
+            <li><b>02</b><div><strong>Make memory searchable.</strong><p>Keyword search helps users rediscover themes and changes that are difficult to notice one entry at a time.</p></div></li>
+            <li><b>03</b><div><strong>Protect the original moment.</strong><p>Primary entries are locked. Later understanding appears as a follow-up note, preserving both versions of the self.</p></div></li>
+          </ol>
+        </section>
+
+        <section class="anchor-case-build">
+          <div>
+            <span>03 · HOW I BUILT IT</span>
+            <p><b>Observe</b> → Define → Design → Build → Audit</p>
+          </div>
+          <small>ChatGPT clarified requirements and product logic. Gemini supported visual exploration and implementation. Codex helped with iteration, debugging, integration, and product QA. I owned the priorities, trade-offs, experience principles, and final decisions.</small>
+        </section>
+
+        <blockquote class="anchor-case-reflection">
+          <span>04 · WHAT I LEARNED</span>
+          Vibe coding made the interface tangible quickly. The real product work was deciding what deserved to exist and what should wait.
+        </blockquote>
+        <button class="anchor-case-close anchor-case-close-bottom" type="button"><span>⌞</span> Close case</button>
+      </div>
+    </aside>
+  </div>
+
   <dialog class="wechat-dialog" id="wechat-dialog" aria-labelledby="wechat-title">
     <button class="dialog-close" type="button" aria-label="Close contact dialog">Close ×</button>
     <span class="eyebrow">LET’S CONNECT</span><h2 id="wechat-title">WeChat / Phone</h2>
     <img src="assets/portfolio/jovan-yan-wechat-qr.jpg" alt="Jovan Yan WeChat QR code"><strong>139 0399 2996</strong><p>Scan the QR code or add me by phone number.</p>
   </dialog>
-  <script src="script.js?v=32"></script>
+
+  <div class="email-dialog-layer" hidden>
+    <button class="email-dialog-scrim" type="button" aria-label="Close email dialog"></button>
+    <div class="email-dialog" id="email-dialog" role="dialog" aria-modal="true" aria-labelledby="email-title">
+      <button class="dialog-close" type="button" aria-label="Close email dialog">Close ×</button>
+      <span class="eyebrow">LET’S CONNECT</span>
+      <h2 id="email-title">Email</h2>
+      <strong class="email-address">yanzhuofan333@163.com</strong>
+      <div class="email-actions">
+        <button class="email-copy" type="button" data-email="yanzhuofan333@163.com">Copy email</button>
+        <a href="mailto:yanzhuofan333@163.com">Open mail app</a>
+      </div>
+      <p class="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+  <script src="script.js?v=33"></script>
 </body>
 </html>

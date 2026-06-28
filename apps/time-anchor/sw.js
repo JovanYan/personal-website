@@ -1,4 +1,4 @@
-const CACHE = "time-anchor-v2";
+const CACHE = "time-anchor-v3";
 const SHELL = ["./", "./index.html", "./app.css", "./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", event => {

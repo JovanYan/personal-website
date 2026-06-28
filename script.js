@@ -189,6 +189,37 @@ window.addEventListener("keydown", event => {
   if (event.key === "Escape" && !caseDrawerLayer.hidden) closeCaseDrawer();
 });
 
+const anchorCaseLayer = document.querySelector(".anchor-case-layer");
+const anchorCaseOpen = document.querySelector(".anchor-case-open");
+let lastFocusedAnchorCaseButton = null;
+
+function openAnchorCaseDrawer() {
+  lastFocusedAnchorCaseButton = document.activeElement;
+  anchorCaseLayer.hidden = false;
+  requestAnimationFrame(() => {
+    anchorCaseLayer.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    anchorCaseLayer.querySelector(".anchor-case-close-top").focus();
+  });
+}
+
+function closeAnchorCaseDrawer() {
+  anchorCaseLayer.classList.remove("is-open");
+  document.body.style.overflow = "";
+  window.setTimeout(() => {
+    anchorCaseLayer.hidden = true;
+    lastFocusedAnchorCaseButton?.focus();
+  }, 220);
+}
+
+anchorCaseOpen.addEventListener("click", openAnchorCaseDrawer);
+document.querySelectorAll(".anchor-case-close, .anchor-case-scrim").forEach(control => {
+  control.addEventListener("click", closeAnchorCaseDrawer);
+});
+window.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !anchorCaseLayer.hidden) closeAnchorCaseDrawer();
+});
+
 document.querySelectorAll("details").forEach(detail => {
   detail.addEventListener("toggle", () => {
     const label = detail.querySelector("summary i");
@@ -233,6 +264,67 @@ document.querySelector(".wechat-open").addEventListener("click", () => wechatDia
 wechatDialog.querySelector(".dialog-close").addEventListener("click", () => wechatDialog.close());
 wechatDialog.addEventListener("click", event => {
   if (event.target === wechatDialog) wechatDialog.close();
+});
+
+const emailDialogLayer = document.querySelector(".email-dialog-layer");
+const emailDialog = document.querySelector("#email-dialog");
+const emailCopyButton = document.querySelector(".email-copy");
+const copyStatus = document.querySelector(".copy-status");
+
+function openEmailDialog() {
+  copyStatus.textContent = "";
+  emailDialogLayer.hidden = false;
+  document.body.style.overflow = "hidden";
+  emailCopyButton.focus();
+}
+
+function closeEmailDialog() {
+  emailDialogLayer.hidden = true;
+  document.body.style.overflow = "";
+}
+
+document.querySelector(".email-open").addEventListener("click", () => {
+  openEmailDialog();
+});
+emailDialog.querySelector(".dialog-close").addEventListener("click", closeEmailDialog);
+emailDialogLayer.querySelector(".email-dialog-scrim").addEventListener("click", closeEmailDialog);
+emailCopyButton.addEventListener("click", async () => {
+  const email = emailCopyButton.dataset.email;
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(email);
+    } else {
+      const copyField = document.createElement("textarea");
+      copyField.value = email;
+      copyField.setAttribute("readonly", "");
+      copyField.style.position = "fixed";
+      copyField.style.opacity = "0";
+      document.body.append(copyField);
+      copyField.select();
+      document.execCommand("copy");
+      copyField.remove();
+    }
+    copyStatus.textContent = "Copied to clipboard.";
+    emailCopyButton.textContent = "Copied";
+  } catch {
+    const copyField = document.createElement("textarea");
+    copyField.value = email;
+    copyField.setAttribute("readonly", "");
+    copyField.style.position = "fixed";
+    copyField.style.opacity = "0";
+    document.body.append(copyField);
+    copyField.select();
+    const copied = document.execCommand("copy");
+    copyField.remove();
+    copyStatus.textContent = copied ? "Copied to clipboard." : "Copy blocked. Select the email above.";
+    emailCopyButton.textContent = copied ? "Copied" : "Copy email";
+  }
+  window.setTimeout(() => {
+    emailCopyButton.textContent = "Copy email";
+  }, 1800);
+});
+window.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !emailDialogLayer.hidden) closeEmailDialog();
 });
 
 renderBookPage();
