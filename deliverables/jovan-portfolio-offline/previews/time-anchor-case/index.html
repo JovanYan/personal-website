@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Time Anchor — Case Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="preview-header">
+    <a href="#top">TIME ANCHOR <span>↗</span></a>
+    <div>LOCAL CASE PREVIEW · NOT IN PORTFOLIO</div>
+    <a class="header-link" href="../../apps/time-anchor/" target="_blank" rel="noopener">Open product ↗</a>
+  </header>
+
+  <main id="top">
+    <section class="case-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">BUILD 01 · VIBE CODING PRODUCT</span>
+        <h1>A five-year diary for meeting <em>your past self.</em></h1>
+        <p class="hero-lead">I turned a conversation at an offline journaling event into a working local-first product—defining the experience, designing its metaphors, and using AI to close the distance between an observation and something people can try.</p>
+
+        <dl class="project-meta">
+          <div><dt>Role</dt><dd>Independent Product Creator</dd></div>
+          <div><dt>Status</dt><dd>Working frontend prototype</dd></div>
+          <div><dt>My scope</dt><dd>Product · UX · Visual language · Decisions</dd></div>
+        </dl>
+
+        <blockquote>
+          <span>THE PRODUCT QUESTION</span>
+          How might a digital diary preserve the ritual of handwriting while making long-term reflection easier to continue?
+        </blockquote>
+        <button class="explore-case" type="button" data-open-case>
+          <span>I’ll show you how I built this</span>
+          <b>Explore the case →</b>
+        </button>
+      </div>
+
+      <div class="product-stage">
+        <div class="stage-toolbar">
+          <div><i></i> LIVE PROTOTYPE</div>
+          <div class="view-switch" role="group" aria-label="Preview mode">
+            <button class="active" type="button" data-view="live">Try app</button>
+            <button type="button" data-view="screens">Screens</button>
+          </div>
+        </div>
+
+        <div class="live-view active" data-panel="live">
+          <iframe src="../../apps/time-anchor/" title="Interactive Time Anchor prototype"></iframe>
+        </div>
+
+        <div class="screen-view" data-panel="screens">
+          <figure>
+            <img src="../../deliverables/5year-diary-screenshots/01-cover.png" alt="Time Anchor cover and annual memory map">
+            <figcaption>01 · Annual memory map</figcaption>
+          </figure>
+          <figure>
+            <img src="../../deliverables/5year-diary-screenshots/02-diary-view.png" alt="Time Anchor five-year same-day timeline">
+            <figcaption>02 · Five-year same-day timeline</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="case-drawer" id="case-drawer" aria-labelledby="drawer-title">
+    <button class="drawer-close" type="button" aria-label="Close case">Close ×</button>
+    <div class="drawer-sheet">
+      <header class="drawer-heading">
+        <span>TIME ANCHOR · PRODUCT CASE</span>
+        <div>
+          <small>THE STORY STARTS HERE ↓</small>
+          <h2 id="drawer-title">A diary people wanted to keep—without the friction that made them stop.</h2>
+        </div>
+      </header>
+
+      <div class="origin-story">
+        <div class="origin-copy">
+          <span>01 · OBSERVE</span>
+          <h3>The real problem was continuity.</h3>
+          <p>At an offline journaling event, I heard the same tension several times: physical five-year diaries felt meaningful, but they were difficult to carry, offered little feedback, and made progress hard to see.</p>
+          <blockquote>I reframed the challenge from “make journaling more emotional” to reducing friction while preserving the seriousness of writing something down.</blockquote>
+        </div>
+        <div class="evidence-gallery">
+          <figure class="community-photo">
+            <img src="assets/journaling-community.JPG" alt="An offline journaling community gathering with decorated notebooks">
+            <figcaption><b>01</b><span>Where the observation began</span></figcaption>
+          </figure>
+          <figure class="diary-photo">
+            <img src="assets/five-year-diary-reference.jpg" alt="A physical five-year memory book">
+            <figcaption><b>02</b><span>The ritual worth preserving</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="decision-story">
+        <div class="decision-heading">
+          <span>02 · PRODUCT RESPONSE</span>
+          <h3>Three decisions shaped the experience.</h3>
+        </div>
+        <ol>
+          <li>
+            <b>01</b>
+            <div><strong>Make time visible.</strong><p>A same-day five-year timeline supports reflection; an annual memory map makes accumulated effort visible.</p></div>
+          </li>
+          <li>
+            <b>02</b>
+            <div><strong>Make memory searchable.</strong><p>Keyword search helps users rediscover themes and changes that are difficult to notice one entry at a time.</p></div>
+          </li>
+          <li>
+            <b>03</b>
+            <div><strong>Protect the original moment.</strong><p>Primary entries are locked. Later understanding appears as a follow-up note, preserving both versions of the self.</p></div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="build-strip">
+        <div class="build-story">
+          <span>03 · HOW I BUILT IT</span>
+          <p><b>Observe</b> → Define → Design → Build → Audit</p>
+          <small>ChatGPT clarified requirements and product logic. Gemini supported visual exploration and implementation. I owned the priorities, trade-offs, experience principles, and final decisions.</small>
+        </div>
+        <blockquote class="drawer-reflection">
+          <span>04 · WHAT I LEARNED</span>
+          Vibe coding made the interface tangible quickly. The real product work was deciding what deserved to exist—and what should wait.
+        </blockquote>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "时间锚点 - 五年拾光手账",
+  "short_name": "时间锚点",
+  "description": "每天只写几句话，在同一天看见五年的自己。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f3eb",
+  "theme_color": "#4a3c31",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
